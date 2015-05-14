@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -148,16 +149,56 @@ namespace Commander
                 {
                     if (selectedRow[0].Cells[2].Value == "<DIR>")
                     {
-                        string path = selectedRow[0].Cells[0].Value.ToString() + selectedRow[0].Cells[1].Value.ToString() + "\\";
+                        string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         InitControls(path, dataGVLeft);
                     
                     }
                     else
                     {
-                        MessageBox.Show("Plik");
+                        string path = selectedRow[0].Cells[0].Value.ToString() + selectedRow[0].Cells[1].Value.ToString();
+                        Process.Start(path);
                     }
                 }
             }            
+        }
+
+        private void pathBoxLeft_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                string path = pathBoxLeft.Text;
+
+                if (path.Contains(" "))
+                {
+                    MessageBox.Show("Błędna ścieżka");
+                }
+                else
+                {
+                    
+
+                    try
+                    {
+                        FileAttributes attr = File.GetAttributes(path);
+                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                        {
+                            InitControls(path, dataGVLeft);
+                        }
+                        else
+                        {
+                            Process.Start(path);
+                        }
+                           
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Błędna ścieżka");
+                    }
+
+                    //detect whether its a directory or file
+                    
+                }
+            }  
         }
 
     }

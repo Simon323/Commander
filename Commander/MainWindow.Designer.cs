@@ -121,6 +121,7 @@
             this.pathBoxLeft.Name = "pathBoxLeft";
             this.pathBoxLeft.Size = new System.Drawing.Size(365, 20);
             this.pathBoxLeft.TabIndex = 6;
+            this.pathBoxLeft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pathBoxLeft_KeyDown);
             // 
             // textBox2
             // 
