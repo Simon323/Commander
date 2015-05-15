@@ -25,9 +25,14 @@ namespace Commander
             foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
             {
                 driveComboLeft.Items.Add(driveInfo);
+                driveComboRight.Items.Add(driveInfo);
             }
 
             driveComboLeft.SelectedIndex = 0;
+            driveComboRight.SelectedIndex = 0;
+
+            pathBoxLeft.Text = driveComboLeft.Text;
+            pathBoxRight.Text = driveComboRight.Text;
 
         }
 
@@ -111,8 +116,6 @@ namespace Commander
             FillDataGridView(dataGridView, rootList);
             FillDataGridView(dataGridView, foldersList);
             FillDataGridView(dataGridView, filesList);
-
-            pathBoxLeft.Text = path;
         }
 
         private void FillDataGridView(DataGridView dataGridView, List<DataGridViewModel> list)
@@ -126,10 +129,12 @@ namespace Commander
 
         #endregion
 
+        #region Directory - Left
 
         private void driveComboLeft_SelectedIndexChanged(object sender, EventArgs e)
         {
             string pathLeft = driveComboLeft.Text;
+            pathBoxLeft.Text = driveComboLeft.Text;
 
             InitControls(pathLeft, dataGVLeft);
         }
@@ -151,7 +156,7 @@ namespace Commander
                     {
                         string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         InitControls(path, dataGVLeft);
-                    
+
                     }
                     else
                     {
@@ -159,7 +164,7 @@ namespace Commander
                         Process.Start(path);
                     }
                 }
-            }            
+            }
         }
 
         private void pathBoxLeft_KeyDown(object sender, KeyEventArgs e)
@@ -174,7 +179,7 @@ namespace Commander
                 }
                 else
                 {
-                    
+
 
                     try
                     {
@@ -187,19 +192,99 @@ namespace Commander
                         {
                             Process.Start(path);
                         }
-                           
+
                     }
 
                     catch (Exception ex)
                     {
                         MessageBox.Show("Błędna ścieżka");
+                        ProgressBarForm pbf = new ProgressBarForm();
+                        pbf.Show();
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Directory - Right
+
+        private void driveComboRight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string pathLeft = driveComboRight.Text;
+            pathBoxRight.Text = driveComboRight.Text;
+            InitControls(pathLeft, dataGVRight);
+        }
+
+        private void pathBoxRight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                string path = pathBoxRight.Text;
+
+                if (path.Contains(" "))
+                {
+                    MessageBox.Show("Błędna ścieżka");
+                }
+                else
+                {
+
+
+                    try
+                    {
+                        FileAttributes attr = File.GetAttributes(path);
+                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                        {
+                            InitControls(path, dataGVRight);
+                        }
+                        else
+                        {
+                            Process.Start(path);
+                        }
+
                     }
 
-                    //detect whether its a directory or file
-                    
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Błędna ścieżka");
+                        ProgressBarForm pbf = new ProgressBarForm();
+                        pbf.Show();
+                    }
                 }
-            }  
+            }
         }
+
+        private void dataGVRight_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = dataGVRight.SelectedRows;
+
+            if (selectedRow.Count == 1)
+            {
+                if (Convert.ToBoolean(selectedRow[0].Cells[4].Value))
+                {
+                    string path = selectedRow[0].Cells[0].Value.ToString();
+                    InitControls(path, dataGVRight);
+                }
+                else
+                {
+                    if (selectedRow[0].Cells[2].Value == "<DIR>")
+                    {
+                        string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
+                        InitControls(path, dataGVRight);
+
+                    }
+                    else
+                    {
+                        string path = selectedRow[0].Cells[0].Value.ToString() + selectedRow[0].Cells[1].Value.ToString();
+                        Process.Start(path);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+
 
     }
 }

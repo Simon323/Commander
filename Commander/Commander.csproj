@@ -53,6 +53,12 @@
     </Compile>
     <Compile Include="Models\DataGridViewModel.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressBarForm.Designer.cs">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
