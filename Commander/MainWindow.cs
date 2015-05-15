@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Commander.Models;
@@ -15,9 +16,12 @@ namespace Commander
 {
     public partial class MainWindow : Form
     {
+        public ProgressBarForm proceProgressBarForm;
         public MainWindow()
         {
             InitializeComponent();
+            backgroundWorker.WorkerSupportsCancellation = true;
+            backgroundWorker.WorkerReportsProgress = true;
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -198,8 +202,7 @@ namespace Commander
                     catch (Exception ex)
                     {
                         MessageBox.Show("Błędna ścieżka");
-                        ProgressBarForm pbf = new ProgressBarForm();
-                        pbf.Show();
+                        
                     }
                 }
             }
@@ -247,8 +250,6 @@ namespace Commander
                     catch (Exception ex)
                     {
                         MessageBox.Show("Błędna ścieżka");
-                        ProgressBarForm pbf = new ProgressBarForm();
-                        pbf.Show();
                     }
                 }
             }
@@ -284,7 +285,72 @@ namespace Commander
 
         #endregion
 
+        #region ProgressBar - Copy
 
+        public void Display(string text)
+        {
+            MessageBox.Show("Wykonano");
+        }
+
+        public void copy_Click(object sender, EventArgs e)
+        {
+            backgroundWorker.WorkerSupportsCancellation = true;
+            proceProgressBarForm = new ProgressBarForm();
+            proceProgressBarForm.Cancel += () =>
+            {
+                if (!backgroundWorker.CancellationPending)
+                {
+                    backgroundWorker.CancelAsync();
+                    proceProgressBarForm.Close();
+                    copy.Enabled = true;
+                }
+            };
+
+            copy.Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            proceProgressBarForm.Show();
+        }
+
+        public void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            
+            for (int i = 0; i <= 100; i++)
+            {
+                if (backgroundWorker.CancellationPending)
+                {
+                    e.Cancel = true;
+                  //  backgroundWorker.ReportProgress(0);
+                }
+                else
+                {
+                    SimulateHeavyWork();
+                    backgroundWorker.ReportProgress(i);
+
+                    //if (i == 100)
+                    //    backgroundWorker.ReportProgress(0);
+                }
+
+            }
+        }
+
+        public void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            proceProgressBarForm.progressBar.Value = e.ProgressPercentage;
+            proceProgressBarForm.progressLabel.Text = e.ProgressPercentage.ToString() + " %";
+        }
+
+        public void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            proceProgressBarForm.Close();
+        }
+
+        public void SimulateHeavyWork()
+        {
+            Thread.Sleep(10);
+        }
+
+        #endregion
 
     }
 }

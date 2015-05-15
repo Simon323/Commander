@@ -40,8 +40,8 @@
             this.preview = new System.Windows.Forms.ToolStripMenuItem();
             this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeName = new System.Windows.Forms.ToolStripMenuItem();
-            this.createDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.change = new System.Windows.Forms.ToolStripMenuItem();
+            this.create = new System.Windows.Forms.ToolStripMenuItem();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.close = new System.Windows.Forms.ToolStripMenuItem();
             this.driveComboRight = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,7 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVLeft)).BeginInit();
             this.menuStripBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVRight)).BeginInit();
@@ -131,8 +132,8 @@
             this.preview,
             this.edit,
             this.copy,
-            this.changeName,
-            this.createDirectory,
+            this.change,
+            this.create,
             this.delete,
             this.close});
             this.menuStripBottom.Location = new System.Drawing.Point(0, 537);
@@ -159,18 +160,19 @@
             this.copy.Name = "copy";
             this.copy.Size = new System.Drawing.Size(47, 20);
             this.copy.Text = "Copy";
+            this.copy.Click += new System.EventHandler(this.copy_Click);
             // 
-            // changeName
+            // change
             // 
-            this.changeName.Name = "changeName";
-            this.changeName.Size = new System.Drawing.Size(95, 20);
-            this.changeName.Text = "Change Name";
+            this.change.Name = "change";
+            this.change.Size = new System.Drawing.Size(60, 20);
+            this.change.Text = "Change";
             // 
-            // createDirectory
+            // create
             // 
-            this.createDirectory.Name = "createDirectory";
-            this.createDirectory.Size = new System.Drawing.Size(104, 20);
-            this.createDirectory.Text = "Create Directory";
+            this.create.Name = "create";
+            this.create.Size = new System.Drawing.Size(53, 20);
+            this.create.Text = "Create";
             // 
             // delete
             // 
@@ -251,6 +253,12 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,8 +297,8 @@
         private System.Windows.Forms.ToolStripMenuItem preview;
         private System.Windows.Forms.ToolStripMenuItem edit;
         private System.Windows.Forms.ToolStripMenuItem copy;
-        private System.Windows.Forms.ToolStripMenuItem changeName;
-        private System.Windows.Forms.ToolStripMenuItem createDirectory;
+        private System.Windows.Forms.ToolStripMenuItem change;
+        private System.Windows.Forms.ToolStripMenuItem create;
         private System.Windows.Forms.ToolStripMenuItem delete;
         private System.Windows.Forms.ToolStripMenuItem close;
         private System.Windows.Forms.ComboBox driveComboRight;
@@ -301,6 +309,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        public System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 
