@@ -119,6 +119,7 @@
             // 
             // pathBoxLeft
             // 
+            this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Info;
             this.pathBoxLeft.Location = new System.Drawing.Point(12, 96);
             this.pathBoxLeft.Name = "pathBoxLeft";
             this.pathBoxLeft.Size = new System.Drawing.Size(365, 20);

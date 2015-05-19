@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Commander.Helpers;
 using Commander.Models;
 
 namespace Commander
@@ -17,6 +18,7 @@ namespace Commander
     public partial class MainWindow : Form
     {
         public ProgressBarForm proceProgressBarForm;
+        private string ActiveColorName = "Bisque";
         public MainWindow()
         {
             InitializeComponent();
@@ -44,9 +46,7 @@ namespace Commander
 
         private void InitControls(string path, DataGridView dataGridView)
         {
-            //DataTable dataTable = (DataTable) dataGridView.DataSource;
-            //dataTable.Clear();
-
+            
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
 
@@ -313,24 +313,22 @@ namespace Commander
 
         public void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            string source = "D:\\Linux\\linuxmint-17.1-xfce-32bit.iso";
+            string destiny = "D:\\Kopie\\linuxmint-17.1-xfce-32bit.iso";
+
+            CopyPath copyPath = GetSourceAndDestination();
+
+            FileCopier fileCopier = new FileCopier(source, destiny);
+            fileCopier.OnProgressChanged += Progress;
+            fileCopier.OnComplete += EndOfOperation;
             
-            
-            for (int i = 0; i <= 100; i++)
+            if (backgroundWorker.CancellationPending)
             {
-                if (backgroundWorker.CancellationPending)
-                {
-                    e.Cancel = true;
-                  //  backgroundWorker.ReportProgress(0);
-                }
-                else
-                {
-                    SimulateHeavyWork();
-                    backgroundWorker.ReportProgress(i);
-
-                    //if (i == 100)
-                    //    backgroundWorker.ReportProgress(0);
-                }
-
+                e.Cancel = true;
+            }
+            else
+            {
+                fileCopier.Copy();
             }
         }
 
@@ -348,6 +346,91 @@ namespace Commander
         public void SimulateHeavyWork()
         {
             Thread.Sleep(10);
+        }
+
+        private void Progress(double Persentage, ref bool Cancel)
+        {
+            backgroundWorker.ReportProgress(Convert.ToInt32(Persentage));
+        }
+        private void EndOfOperation()
+        {
+        }
+
+        public CopyPath GetSourceAndDestination()
+        {
+            TextBox sourceBox;
+            TextBox destinyBox;
+            bool sourceCorrect = false;
+            bool destinyCorrect = false;
+            DataGridViewSelectedRowCollection selectedRow;
+            CopyPath copyPath = new CopyPath();
+
+
+            if (pathBoxLeft.BackColor.Name == ActiveColorName)
+            {
+                sourceBox = pathBoxLeft;
+                destinyBox = pathBoxRight;
+                selectedRow = dataGVLeft.SelectedRows;
+            }
+            else
+            {
+                sourceBox = pathBoxRight;
+                destinyBox = pathBoxLeft;
+                selectedRow = dataGVRight.SelectedRows;
+            }
+
+            try
+            {
+                FileAttributes sourceAttributes = File.GetAttributes(sourceBox.Text);
+                if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    sourceCorrect = false;
+                }
+                else
+                {
+                    sourceCorrect = true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                sourceCorrect = false;
+                copyPath.IsOk = false;
+                return copyPath;
+            }
+
+            try
+            {
+                FileAttributes sourceAttributes = File.GetAttributes(destinyBox.Text);
+                if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    sourceCorrect = true;
+                }
+                else
+                {
+                    sourceCorrect = false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                sourceCorrect = false;
+                copyPath.IsOk = false;
+                return copyPath;
+            }
+
+            if (sourceCorrect && destinyCorrect)
+            {
+                copyPath.Source = sourceBox.Text;
+                copyPath.Destination = destinyBox.Text + "\\" + selectedRow[0].Cells[1].Value;
+                copyPath.IsOk = true;
+                return copyPath;
+            }
+            else
+            {
+                copyPath.IsOk = false;
+                return copyPath;
+            }
         }
 
         #endregion

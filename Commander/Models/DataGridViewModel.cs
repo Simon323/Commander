@@ -14,4 +14,18 @@ namespace Commander.Models
         public string Date { get; set; }
         public bool IsRoot { get; set; }
     }
+
+    public class CopyPath
+    {
+        public string Source { get; set; }
+        public string Destination { get; set; }
+        public bool IsOk { get; set; }
+
+        public CopyPath()
+        {
+            Source = "";
+            Destination = "";
+            IsOk = false;
+        }
+    }
 }
