@@ -156,6 +156,7 @@ namespace Commander
                 if (Convert.ToBoolean(selectedRow[0].Cells[4].Value))
                 {
                     string path = selectedRow[0].Cells[0].Value.ToString();
+                    pathBoxLeft.Text = path;
                     InitControls(path, dataGVLeft);
                 }
                 else
@@ -164,6 +165,7 @@ namespace Commander
                     {
                         string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         path = path.Replace("\\\\", "\\");
+                        pathBoxLeft.Text = path;
                         InitControls(path, dataGVLeft);
 
                     }
@@ -187,7 +189,11 @@ namespace Commander
                     FileAttributes attr = File.GetAttributes(path);
                     if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
                     {
+                        string discDriveChar = path.Substring(0, 3).ToUpper();
+                        driveComboLeft.Text = discDriveChar;
+                        pathBoxLeft.Text = path;
                         InitControls(path, dataGVLeft);
+                        
                     }
                     else
                     {
@@ -199,7 +205,9 @@ namespace Commander
                 catch (Exception ex)
                 {
                     MessageBox.Show("Błędna ścieżka");
-                    pathBoxLeft.Text = driveComboLeft.Text;
+                    path = driveComboLeft.Text;
+                    pathBoxLeft.Text = path;
+                    InitControls(path, dataGVLeft);
                 }                
             }
         }
@@ -226,7 +234,11 @@ namespace Commander
                     FileAttributes attr = File.GetAttributes(path);
                     if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
                     {
+                        string discDriveChar = path.Substring(0, 3).ToUpper();
+                        driveComboRight.Text = discDriveChar;
+                        pathBoxRight.Text = path;
                         InitControls(path, dataGVRight);
+                        
                     }
                     else
                     {
@@ -238,7 +250,9 @@ namespace Commander
                 catch (Exception ex)
                 {
                     MessageBox.Show("Błędna ścieżka");
-                    pathBoxRight.Text = driveComboRight.Text;
+                    path = driveComboRight.Text;
+                    pathBoxRight.Text = path;
+                    InitControls(path, dataGVRight);
                 }                
             }
         }
@@ -252,6 +266,7 @@ namespace Commander
                 if (Convert.ToBoolean(selectedRow[0].Cells[4].Value))
                 {
                     string path = selectedRow[0].Cells[0].Value.ToString();
+                    pathBoxRight.Text = path;
                     InitControls(path, dataGVRight);
                 }
                 else
@@ -260,6 +275,7 @@ namespace Commander
                     {
                         string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         path = path.Replace("\\\\", "\\");
+                        pathBoxRight.Text = path;
                         InitControls(path, dataGVRight);
 
                     }

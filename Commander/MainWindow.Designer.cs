@@ -60,6 +60,7 @@
             // 
             // driveComboLeft
             // 
+            this.driveComboLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveComboLeft.Location = new System.Drawing.Point(12, 68);
             this.driveComboLeft.Name = "driveComboLeft";
             this.driveComboLeft.Size = new System.Drawing.Size(121, 21);
@@ -191,6 +192,7 @@
             // 
             // driveComboRight
             // 
+            this.driveComboRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveComboRight.Location = new System.Drawing.Point(407, 68);
             this.driveComboRight.Name = "driveComboRight";
             this.driveComboRight.Size = new System.Drawing.Size(121, 21);
