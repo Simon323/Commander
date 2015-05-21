@@ -299,31 +299,33 @@ namespace Commander
 
         public void copy_Click(object sender, EventArgs e)
         {
-            backgroundWorker.WorkerSupportsCancellation = true;
-            proceProgressBarForm = new ProgressBarForm();
-            proceProgressBarForm.Cancel += () =>
-            {
-                if (!backgroundWorker.CancellationPending)
-                {
-                    backgroundWorker.CancelAsync();
-                    proceProgressBarForm.Close();
-                    copy.Enabled = true;
-                }
-            };
+            bool checkResult = CheckSelectedRow();
 
-            copy.Enabled = false;
-            backgroundWorker.RunWorkerAsync();
-            proceProgressBarForm.Show();
+            if (checkResult)
+            {
+                backgroundWorker.WorkerSupportsCancellation = true;
+                proceProgressBarForm = new ProgressBarForm();
+                proceProgressBarForm.Cancel += () =>
+                {
+                    if (!backgroundWorker.CancellationPending)
+                    {
+                        backgroundWorker.CancelAsync();
+                        proceProgressBarForm.Close();
+                        copy.Enabled = true;
+                    }
+                };
+
+                copy.Enabled = false;
+                backgroundWorker.RunWorkerAsync();
+                proceProgressBarForm.Show();
+            }
         }
 
         public void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string source = "D:\\Linux\\linuxmint-17.1-xfce-32bit.iso";
-            string destiny = "D:\\Kopie\\linuxmint-17.1-xfce-32bit.iso";
-
             CopyPath copyPath = GetSourceAndDestination();
 
-            FileCopier fileCopier = new FileCopier(source, destiny);
+            FileCopier fileCopier = new FileCopier(copyPath.Source, copyPath.Destination);
             fileCopier.OnProgressChanged += Progress;
             fileCopier.OnComplete += EndOfOperation;
             
@@ -382,80 +384,6 @@ namespace Commander
             }
 
             return copyPath;
-
-            TextBox sourceBox;
-            TextBox destinyBox;
-            bool sourceCorrect = false;
-            bool destinyCorrect = false;
-            //DataGridViewSelectedRowCollection selectedRow;
-            //pyPath copyPath = new CopyPath();
-
-            MessageBox.Show(activeGrid.ToString());
-            //if (pathBoxLeft.BackColor.Name == ActiveColorName)
-            //{
-            //    sourceBox = pathBoxLeft;
-            //    destinyBox = pathBoxRight;
-            //    selectedRow = dataGVLeft.SelectedRows;
-            //}
-            //else
-            //{
-            //    sourceBox = pathBoxRight;
-            //    destinyBox = pathBoxLeft;
-            //    selectedRow = dataGVRight.SelectedRows;
-            //}
-
-            //try
-            //{
-            //    FileAttributes sourceAttributes = File.GetAttributes(sourceBox.Text);
-            //    if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
-            //    {
-            //        sourceCorrect = false;
-            //    }
-            //    else
-            //    {
-            //        sourceCorrect = true;
-            //    }
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    sourceCorrect = false;
-            //    copyPath.IsOk = false;
-            //    return copyPath;
-            //}
-
-            //try
-            //{
-            //    FileAttributes sourceAttributes = File.GetAttributes(destinyBox.Text);
-            //    if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
-            //    {
-            //        sourceCorrect = true;
-            //    }
-            //    else
-            //    {
-            //        sourceCorrect = false;
-            //    }
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    sourceCorrect = false;
-            //    copyPath.IsOk = false;
-            //    return copyPath;
-            //}
-
-            //if (sourceCorrect && destinyCorrect)
-            //{
-            //    //copyPath.Source = sourceBox.Text;
-            //    //copyPath.Destination = destinyBox.Text + "\\" + selectedRow[0].Cells[1].Value;
-            //    copyPath.IsOk = true;
-            //    return copyPath;
-            //}
-            //else
-            //{
-            //    copyPath.IsOk = false;
-                return copyPath;
-           // }
         }
 
         #endregion
@@ -482,5 +410,101 @@ namespace Commander
             activeGrid = false;
         }
 
+        public bool CheckSelectedRow()
+        {
+            DataGridViewSelectedRowCollection selectedRow;
+
+            if (activeGrid)
+                selectedRow = dataGVRight.SelectedRows;
+            else
+                selectedRow = dataGVLeft.SelectedRows;
+
+            bool isRoot = Convert.ToBoolean(selectedRow[0].Cells[4].Value);
+
+            if (isRoot)
+            {
+                MessageBox.Show("Nie można skopiować elementu");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void ChangeActiveGrid()
+        {
+            
+        }
+
+        private void preview_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow;
+
+            if (activeGrid)
+                selectedRow = dataGVRight.SelectedRows;
+            else
+                selectedRow = dataGVLeft.SelectedRows;
+
+            bool isRoot = Convert.ToBoolean(selectedRow[0].Cells[4].Value);
+
+            if (isRoot)
+            {
+                MessageBox.Show("Niewłaściwy element");
+            }
+            else
+            {
+                string path = selectedRow[0].Cells[0].Value + "\\" + selectedRow[0].Cells[1].Value;
+                FileAttributes attr = File.GetAttributes(path);
+                if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    MessageBox.Show("Niewłaściwy element");
+                }
+                else
+                {
+                    Process.Start(path);
+                }
+            }
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow;
+
+            if (activeGrid)
+                selectedRow = dataGVRight.SelectedRows;
+            else
+                selectedRow = dataGVLeft.SelectedRows;
+
+            bool isRoot = Convert.ToBoolean(selectedRow[0].Cells[4].Value);
+
+            if (isRoot)
+            {
+                MessageBox.Show("Niewłaściwy element");
+            }
+            else
+            {
+                string path = selectedRow[0].Cells[0].Value + "\\" + selectedRow[0].Cells[1].Value;
+                FileAttributes attr = File.GetAttributes(path);
+                if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    MessageBox.Show("Niewłaściwy element");
+                }
+                else
+                {
+                    Process.Start(path);
+                }
+            }
+        }
+
+        private void create_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

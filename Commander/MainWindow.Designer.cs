@@ -40,7 +40,6 @@
             this.preview = new System.Windows.Forms.ToolStripMenuItem();
             this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.change = new System.Windows.Forms.ToolStripMenuItem();
             this.create = new System.Windows.Forms.ToolStripMenuItem();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.close = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,11 +135,10 @@
             this.preview,
             this.edit,
             this.copy,
-            this.change,
             this.create,
             this.delete,
             this.close});
-            this.menuStripBottom.Location = new System.Drawing.Point(0, 537);
+            this.menuStripBottom.Location = new System.Drawing.Point(0, 501);
             this.menuStripBottom.Name = "menuStripBottom";
             this.menuStripBottom.ShowItemToolTips = true;
             this.menuStripBottom.Size = new System.Drawing.Size(784, 24);
@@ -150,45 +148,49 @@
             // preview
             // 
             this.preview.Name = "preview";
-            this.preview.Size = new System.Drawing.Size(60, 20);
+            this.preview.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
+            this.preview.Size = new System.Drawing.Size(132, 20);
             this.preview.Text = "Preview";
+            this.preview.Click += new System.EventHandler(this.preview_Click);
             // 
             // edit
             // 
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(39, 20);
+            this.edit.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
+            this.edit.Size = new System.Drawing.Size(111, 20);
             this.edit.Text = "Edit";
+            this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // copy
             // 
             this.copy.Name = "copy";
-            this.copy.Size = new System.Drawing.Size(47, 20);
+            this.copy.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
+            this.copy.Size = new System.Drawing.Size(119, 20);
             this.copy.Text = "Copy";
             this.copy.Click += new System.EventHandler(this.copy_Click);
-            // 
-            // change
-            // 
-            this.change.Name = "change";
-            this.change.Size = new System.Drawing.Size(60, 20);
-            this.change.Text = "Change";
             // 
             // create
             // 
             this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(53, 20);
+            this.create.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
+            this.create.Size = new System.Drawing.Size(135, 20);
             this.create.Text = "Create";
+            this.create.Click += new System.EventHandler(this.create_Click);
             // 
             // delete
             // 
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(52, 20);
+            this.delete.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
+            this.delete.Size = new System.Drawing.Size(134, 20);
             this.delete.Text = "Delete";
             // 
             // close
             // 
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(48, 20);
+            this.close.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
+            this.close.Size = new System.Drawing.Size(130, 20);
             this.close.Text = "Close";
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // driveComboRight
             // 
@@ -270,7 +272,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 525);
             this.Controls.Add(this.dataGVRight);
             this.Controls.Add(this.pathBoxRight);
             this.Controls.Add(this.driveComboRight);
@@ -304,7 +306,6 @@
         private System.Windows.Forms.ToolStripMenuItem preview;
         private System.Windows.Forms.ToolStripMenuItem edit;
         private System.Windows.Forms.ToolStripMenuItem copy;
-        private System.Windows.Forms.ToolStripMenuItem change;
         private System.Windows.Forms.ToolStripMenuItem create;
         private System.Windows.Forms.ToolStripMenuItem delete;
         private System.Windows.Forms.ToolStripMenuItem close;
