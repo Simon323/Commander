@@ -68,6 +68,7 @@
             // 
             // dataGVLeft
             // 
+            this.dataGVLeft.AllowUserToAddRows = false;
             this.dataGVLeft.AllowUserToResizeRows = false;
             this.dataGVLeft.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGVLeft.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -85,6 +86,7 @@
             this.dataGVLeft.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGVLeft.Size = new System.Drawing.Size(361, 323);
             this.dataGVLeft.TabIndex = 4;
+            this.dataGVLeft.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVLeft_CellClick);
             this.dataGVLeft.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVLeft_CellDoubleClick);
             // 
             // PathLeftDG
@@ -119,7 +121,7 @@
             // 
             // pathBoxLeft
             // 
-            this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Info;
+            this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Window;
             this.pathBoxLeft.Location = new System.Drawing.Point(12, 96);
             this.pathBoxLeft.Name = "pathBoxLeft";
             this.pathBoxLeft.Size = new System.Drawing.Size(365, 20);
@@ -205,6 +207,7 @@
             // 
             // dataGVRight
             // 
+            this.dataGVRight.AllowUserToAddRows = false;
             this.dataGVRight.AllowUserToResizeRows = false;
             this.dataGVRight.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGVRight.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -222,6 +225,7 @@
             this.dataGVRight.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGVRight.Size = new System.Drawing.Size(361, 323);
             this.dataGVRight.TabIndex = 12;
+            this.dataGVRight.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVRight_CellClick);
             this.dataGVRight.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVRight_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1

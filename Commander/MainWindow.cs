@@ -18,7 +18,7 @@ namespace Commander
     public partial class MainWindow : Form
     {
         public ProgressBarForm proceProgressBarForm;
-        private string ActiveColorName = "Bisque";
+        public bool activeGrid = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,11 +34,15 @@ namespace Commander
                 driveComboRight.Items.Add(driveInfo);
             }
 
-            driveComboLeft.SelectedIndex = 0;
             driveComboRight.SelectedIndex = 0;
-
-            pathBoxLeft.Text = driveComboLeft.Text;
             pathBoxRight.Text = driveComboRight.Text;
+            dataGVRight.CurrentCell.Selected = false;
+
+            driveComboLeft.SelectedIndex = 0;
+            pathBoxLeft.Text = driveComboLeft.Text;
+            pathBoxLeft.BackColor = Color.Silver;
+            
+            
 
         }
 
@@ -159,12 +163,13 @@ namespace Commander
                     if (selectedRow[0].Cells[2].Value == "<DIR>")
                     {
                         string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
+                        path = path.Replace("\\\\", "\\");
                         InitControls(path, dataGVLeft);
 
                     }
                     else
                     {
-                        string path = selectedRow[0].Cells[0].Value.ToString() + selectedRow[0].Cells[1].Value.ToString();
+                        string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         Process.Start(path);
                     }
                 }
@@ -177,34 +182,25 @@ namespace Commander
             {
                 string path = pathBoxLeft.Text;
 
-                if (path.Contains(" "))
+                try
+                {
+                    FileAttributes attr = File.GetAttributes(path);
+                    if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                    {
+                        InitControls(path, dataGVLeft);
+                    }
+                    else
+                    {
+                        Process.Start(path);
+                    }
+
+                }
+
+                catch (Exception ex)
                 {
                     MessageBox.Show("Błędna ścieżka");
-                }
-                else
-                {
-
-
-                    try
-                    {
-                        FileAttributes attr = File.GetAttributes(path);
-                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
-                        {
-                            InitControls(path, dataGVLeft);
-                        }
-                        else
-                        {
-                            Process.Start(path);
-                        }
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Błędna ścieżka");
-                        
-                    }
-                }
+                    pathBoxLeft.Text = driveComboLeft.Text;
+                }                
             }
         }
 
@@ -225,33 +221,25 @@ namespace Commander
             {
                 string path = pathBoxRight.Text;
 
-                if (path.Contains(" "))
+                try
+                {
+                    FileAttributes attr = File.GetAttributes(path);
+                    if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                    {
+                        InitControls(path, dataGVRight);
+                    }
+                    else
+                    {
+                        Process.Start(path);
+                    }
+
+                }
+
+                catch (Exception ex)
                 {
                     MessageBox.Show("Błędna ścieżka");
-                }
-                else
-                {
-
-
-                    try
-                    {
-                        FileAttributes attr = File.GetAttributes(path);
-                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
-                        {
-                            InitControls(path, dataGVRight);
-                        }
-                        else
-                        {
-                            Process.Start(path);
-                        }
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Błędna ścieżka");
-                    }
-                }
+                    pathBoxRight.Text = driveComboRight.Text;
+                }                
             }
         }
 
@@ -271,12 +259,13 @@ namespace Commander
                     if (selectedRow[0].Cells[2].Value == "<DIR>")
                     {
                         string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
+                        path = path.Replace("\\\\", "\\");
                         InitControls(path, dataGVRight);
 
                     }
                     else
                     {
-                        string path = selectedRow[0].Cells[0].Value.ToString() + selectedRow[0].Cells[1].Value.ToString();
+                        string path = selectedRow[0].Cells[0].Value.ToString() + "\\" + selectedRow[0].Cells[1].Value.ToString();
                         Process.Start(path);
                     }
                 }
@@ -358,82 +347,124 @@ namespace Commander
 
         public CopyPath GetSourceAndDestination()
         {
+            CopyPath copyPath = new CopyPath();
+            DataGridViewSelectedRowCollection selectedRow;
+
+            if (activeGrid)
+            {
+                selectedRow = dataGVRight.SelectedRows;
+                copyPath.Source = pathBoxRight.Text + "\\" + selectedRow[0].Cells[1].Value;
+                copyPath.Destination = pathBoxLeft.Text + "\\" + selectedRow[0].Cells[1].Value;
+                copyPath.IsOk = true;
+            }
+            else
+            {
+                selectedRow = dataGVLeft.SelectedRows;
+                copyPath.Source = pathBoxLeft.Text + "\\" + selectedRow[0].Cells[1].Value;
+                copyPath.Destination = pathBoxRight.Text + "\\" + selectedRow[0].Cells[1].Value;
+                copyPath.IsOk = true;
+            }
+
+            return copyPath;
+
             TextBox sourceBox;
             TextBox destinyBox;
             bool sourceCorrect = false;
             bool destinyCorrect = false;
-            DataGridViewSelectedRowCollection selectedRow;
-            CopyPath copyPath = new CopyPath();
+            //DataGridViewSelectedRowCollection selectedRow;
+            //pyPath copyPath = new CopyPath();
 
+            MessageBox.Show(activeGrid.ToString());
+            //if (pathBoxLeft.BackColor.Name == ActiveColorName)
+            //{
+            //    sourceBox = pathBoxLeft;
+            //    destinyBox = pathBoxRight;
+            //    selectedRow = dataGVLeft.SelectedRows;
+            //}
+            //else
+            //{
+            //    sourceBox = pathBoxRight;
+            //    destinyBox = pathBoxLeft;
+            //    selectedRow = dataGVRight.SelectedRows;
+            //}
 
-            if (pathBoxLeft.BackColor.Name == ActiveColorName)
-            {
-                sourceBox = pathBoxLeft;
-                destinyBox = pathBoxRight;
-                selectedRow = dataGVLeft.SelectedRows;
-            }
-            else
-            {
-                sourceBox = pathBoxRight;
-                destinyBox = pathBoxLeft;
-                selectedRow = dataGVRight.SelectedRows;
-            }
+            //try
+            //{
+            //    FileAttributes sourceAttributes = File.GetAttributes(sourceBox.Text);
+            //    if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+            //    {
+            //        sourceCorrect = false;
+            //    }
+            //    else
+            //    {
+            //        sourceCorrect = true;
+            //    }
+            //}
 
-            try
-            {
-                FileAttributes sourceAttributes = File.GetAttributes(sourceBox.Text);
-                if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
-                {
-                    sourceCorrect = false;
-                }
-                else
-                {
-                    sourceCorrect = true;
-                }
-            }
+            //catch (Exception ex)
+            //{
+            //    sourceCorrect = false;
+            //    copyPath.IsOk = false;
+            //    return copyPath;
+            //}
 
-            catch (Exception ex)
-            {
-                sourceCorrect = false;
-                copyPath.IsOk = false;
+            //try
+            //{
+            //    FileAttributes sourceAttributes = File.GetAttributes(destinyBox.Text);
+            //    if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+            //    {
+            //        sourceCorrect = true;
+            //    }
+            //    else
+            //    {
+            //        sourceCorrect = false;
+            //    }
+            //}
+
+            //catch (Exception ex)
+            //{
+            //    sourceCorrect = false;
+            //    copyPath.IsOk = false;
+            //    return copyPath;
+            //}
+
+            //if (sourceCorrect && destinyCorrect)
+            //{
+            //    //copyPath.Source = sourceBox.Text;
+            //    //copyPath.Destination = destinyBox.Text + "\\" + selectedRow[0].Cells[1].Value;
+            //    copyPath.IsOk = true;
+            //    return copyPath;
+            //}
+            //else
+            //{
+            //    copyPath.IsOk = false;
                 return copyPath;
-            }
-
-            try
-            {
-                FileAttributes sourceAttributes = File.GetAttributes(destinyBox.Text);
-                if ((sourceAttributes & FileAttributes.Directory) == FileAttributes.Directory)
-                {
-                    sourceCorrect = true;
-                }
-                else
-                {
-                    sourceCorrect = false;
-                }
-            }
-
-            catch (Exception ex)
-            {
-                sourceCorrect = false;
-                copyPath.IsOk = false;
-                return copyPath;
-            }
-
-            if (sourceCorrect && destinyCorrect)
-            {
-                copyPath.Source = sourceBox.Text;
-                copyPath.Destination = destinyBox.Text + "\\" + selectedRow[0].Cells[1].Value;
-                copyPath.IsOk = true;
-                return copyPath;
-            }
-            else
-            {
-                copyPath.IsOk = false;
-                return copyPath;
-            }
+           // }
         }
 
         #endregion
+
+        private void dataGVRight_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pathBoxLeft.BackColor = Color.White;
+            if (dataGVLeft.CurrentCell != null)
+            {
+                dataGVLeft.CurrentCell.Selected = false;
+            }
+            pathBoxRight.BackColor = Color.Silver;
+            activeGrid = true;
+        }
+
+        private void dataGVLeft_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pathBoxRight.BackColor = Color.White;
+            if (dataGVRight.CurrentCell != null)
+            {
+                dataGVRight.CurrentCell.Selected = false;
+            }
+            pathBoxLeft.BackColor = Color.Silver;
+            activeGrid = false;
+        }
 
     }
 }
