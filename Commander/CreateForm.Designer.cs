@@ -47,6 +47,7 @@
             this.createFolderButton.TabIndex = 1;
             this.createFolderButton.Text = "Ok";
             this.createFolderButton.UseVisualStyleBackColor = true;
+            this.createFolderButton.Click += new System.EventHandler(this.createFolderButton_Click);
             // 
             // CreateForm
             // 

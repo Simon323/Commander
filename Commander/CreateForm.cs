@@ -16,5 +16,10 @@ namespace Commander
         {
             InitializeComponent();
         }
+
+        private void createFolderButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
