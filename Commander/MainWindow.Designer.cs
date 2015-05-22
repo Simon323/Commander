@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.driveComboLeft = new System.Windows.Forms.ComboBox();
             this.dataGVLeft = new System.Windows.Forms.DataGridView();
             this.PathLeftDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +53,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.changeLanguage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVLeft)).BeginInit();
             this.menuStripBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVRight)).BeginInit();
@@ -60,10 +62,8 @@
             // driveComboLeft
             // 
             this.driveComboLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.driveComboLeft.Location = new System.Drawing.Point(12, 68);
+            resources.ApplyResources(this.driveComboLeft, "driveComboLeft");
             this.driveComboLeft.Name = "driveComboLeft";
-            this.driveComboLeft.Size = new System.Drawing.Size(121, 21);
-            this.driveComboLeft.TabIndex = 0;
             this.driveComboLeft.SelectedIndexChanged += new System.EventHandler(this.driveComboLeft_SelectedIndexChanged);
             // 
             // dataGVLeft
@@ -78,59 +78,55 @@
             this.SizeLeftDG,
             this.DateLeftDG,
             this.IsRootLeft});
-            this.dataGVLeft.Location = new System.Drawing.Point(16, 133);
+            resources.ApplyResources(this.dataGVLeft, "dataGVLeft");
             this.dataGVLeft.MultiSelect = false;
             this.dataGVLeft.Name = "dataGVLeft";
             this.dataGVLeft.ReadOnly = true;
             this.dataGVLeft.RowHeadersVisible = false;
             this.dataGVLeft.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGVLeft.Size = new System.Drawing.Size(361, 323);
-            this.dataGVLeft.TabIndex = 4;
             this.dataGVLeft.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVLeft_CellClick);
             this.dataGVLeft.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVLeft_CellDoubleClick);
             // 
             // PathLeftDG
             // 
-            this.PathLeftDG.HeaderText = "Path";
+            resources.ApplyResources(this.PathLeftDG, "PathLeftDG");
             this.PathLeftDG.Name = "PathLeftDG";
             this.PathLeftDG.ReadOnly = true;
             // 
             // NameLeftDG
             // 
-            this.NameLeftDG.HeaderText = "Name";
+            resources.ApplyResources(this.NameLeftDG, "NameLeftDG");
             this.NameLeftDG.Name = "NameLeftDG";
             this.NameLeftDG.ReadOnly = true;
             // 
             // SizeLeftDG
             // 
-            this.SizeLeftDG.HeaderText = "Size";
+            resources.ApplyResources(this.SizeLeftDG, "SizeLeftDG");
             this.SizeLeftDG.Name = "SizeLeftDG";
             this.SizeLeftDG.ReadOnly = true;
             // 
             // DateLeftDG
             // 
-            this.DateLeftDG.HeaderText = "Date";
+            resources.ApplyResources(this.DateLeftDG, "DateLeftDG");
             this.DateLeftDG.Name = "DateLeftDG";
             this.DateLeftDG.ReadOnly = true;
             // 
             // IsRootLeft
             // 
-            this.IsRootLeft.HeaderText = "IsRoot";
+            resources.ApplyResources(this.IsRootLeft, "IsRootLeft");
             this.IsRootLeft.Name = "IsRootLeft";
             this.IsRootLeft.ReadOnly = true;
             // 
             // pathBoxLeft
             // 
             this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Window;
-            this.pathBoxLeft.Location = new System.Drawing.Point(12, 96);
+            resources.ApplyResources(this.pathBoxLeft, "pathBoxLeft");
             this.pathBoxLeft.Name = "pathBoxLeft";
-            this.pathBoxLeft.Size = new System.Drawing.Size(365, 20);
-            this.pathBoxLeft.TabIndex = 6;
             this.pathBoxLeft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pathBoxLeft_KeyDown);
             // 
             // menuStripBottom
             // 
-            this.menuStripBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            resources.ApplyResources(this.menuStripBottom, "menuStripBottom");
             this.menuStripBottom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.preview,
             this.edit,
@@ -138,75 +134,61 @@
             this.create,
             this.delete,
             this.close});
-            this.menuStripBottom.Location = new System.Drawing.Point(0, 501);
             this.menuStripBottom.Name = "menuStripBottom";
             this.menuStripBottom.ShowItemToolTips = true;
-            this.menuStripBottom.Size = new System.Drawing.Size(784, 24);
-            this.menuStripBottom.TabIndex = 9;
-            this.menuStripBottom.Text = "menuStripBottom";
             // 
             // preview
             // 
             this.preview.Name = "preview";
             this.preview.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            this.preview.Size = new System.Drawing.Size(132, 20);
-            this.preview.Text = "Preview";
+            resources.ApplyResources(this.preview, "preview");
             this.preview.Click += new System.EventHandler(this.preview_Click);
             // 
             // edit
             // 
             this.edit.Name = "edit";
             this.edit.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            this.edit.Size = new System.Drawing.Size(111, 20);
-            this.edit.Text = "Edit";
+            resources.ApplyResources(this.edit, "edit");
             this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // copy
             // 
             this.copy.Name = "copy";
             this.copy.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            this.copy.Size = new System.Drawing.Size(119, 20);
-            this.copy.Text = "Copy";
+            resources.ApplyResources(this.copy, "copy");
             this.copy.Click += new System.EventHandler(this.copy_Click);
             // 
             // create
             // 
             this.create.Name = "create";
             this.create.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            this.create.Size = new System.Drawing.Size(135, 20);
-            this.create.Text = "Create";
+            resources.ApplyResources(this.create, "create");
             this.create.Click += new System.EventHandler(this.create_Click);
             // 
             // delete
             // 
             this.delete.Name = "delete";
             this.delete.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            this.delete.Size = new System.Drawing.Size(134, 20);
-            this.delete.Text = "Delete";
+            resources.ApplyResources(this.delete, "delete");
             // 
             // close
             // 
             this.close.Name = "close";
             this.close.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            this.close.Size = new System.Drawing.Size(130, 20);
-            this.close.Text = "Close";
+            resources.ApplyResources(this.close, "close");
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // driveComboRight
             // 
             this.driveComboRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.driveComboRight.Location = new System.Drawing.Point(407, 68);
+            resources.ApplyResources(this.driveComboRight, "driveComboRight");
             this.driveComboRight.Name = "driveComboRight";
-            this.driveComboRight.Size = new System.Drawing.Size(121, 21);
-            this.driveComboRight.TabIndex = 10;
             this.driveComboRight.SelectedIndexChanged += new System.EventHandler(this.driveComboRight_SelectedIndexChanged);
             // 
             // pathBoxRight
             // 
-            this.pathBoxRight.Location = new System.Drawing.Point(407, 96);
+            resources.ApplyResources(this.pathBoxRight, "pathBoxRight");
             this.pathBoxRight.Name = "pathBoxRight";
-            this.pathBoxRight.Size = new System.Drawing.Size(365, 20);
-            this.pathBoxRight.TabIndex = 11;
             this.pathBoxRight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pathBoxRight_KeyDown);
             // 
             // dataGVRight
@@ -221,44 +203,42 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGVRight.Location = new System.Drawing.Point(407, 133);
+            resources.ApplyResources(this.dataGVRight, "dataGVRight");
             this.dataGVRight.MultiSelect = false;
             this.dataGVRight.Name = "dataGVRight";
             this.dataGVRight.ReadOnly = true;
             this.dataGVRight.RowHeadersVisible = false;
             this.dataGVRight.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGVRight.Size = new System.Drawing.Size(361, 323);
-            this.dataGVRight.TabIndex = 12;
             this.dataGVRight.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVRight_CellClick);
             this.dataGVRight.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVRight_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Path";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Date";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "IsRoot";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
@@ -268,11 +248,18 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // changeLanguage
+            // 
+            resources.ApplyResources(this.changeLanguage, "changeLanguage");
+            this.changeLanguage.Name = "changeLanguage";
+            this.changeLanguage.UseVisualStyleBackColor = true;
+            this.changeLanguage.Click += new System.EventHandler(this.changeLanguage_Click);
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 525);
+            this.Controls.Add(this.changeLanguage);
             this.Controls.Add(this.dataGVRight);
             this.Controls.Add(this.pathBoxRight);
             this.Controls.Add(this.driveComboRight);
@@ -281,7 +268,6 @@
             this.Controls.Add(this.driveComboLeft);
             this.Controls.Add(this.menuStripBottom);
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGVLeft)).EndInit();
             this.menuStripBottom.ResumeLayout(false);
@@ -318,6 +304,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         public System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Button changeLanguage;
     }
 }
 

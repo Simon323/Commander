@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Commander.Helpers;
 using Commander.Models;
+using System.Globalization;
 
 namespace Commander
 {
@@ -507,6 +508,34 @@ namespace Commander
         private void close_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void changeLanguage_Click(object sender, EventArgs e)
+        {
+            if (Thread.CurrentThread.CurrentUICulture.Name == "pl-PL")
+                ChangeCulture(new CultureInfo("en"));
+            else
+                ChangeCulture(new CultureInfo("pl-PL"));
+        }
+
+        void ChangeCulture(CultureInfo culture)
+        {
+            this.SuspendLayout();
+            Thread.CurrentThread.CurrentUICulture = culture;
+            ComponentResourceManager res = new ComponentResourceManager(typeof(MainWindow));
+
+            res.ApplyResources(this, "$this", culture);
+            UpdateControlCulture(res, this.Controls);
+            this.ResumeLayout(true);
+        }
+
+        void UpdateControlCulture(ComponentResourceManager res, Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                res.ApplyResources(control, control.Name);
+                UpdateControlCulture(res, control.Controls);
+            }
         }
     }
 }
