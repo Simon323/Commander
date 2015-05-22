@@ -120,12 +120,24 @@
   <data name="PathLeftDG.HeaderText" xml:space="preserve">
     <value>Ścieżka</value>
   </data>
+  <data name="NameLeftDG.HeaderText" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="SizeLeftDG.HeaderText" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="DateLeftDG.HeaderText" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="IsRootLeft.HeaderText" xml:space="preserve">
+    <value>Korzeń</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="preview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 20</value>
+    <value>128, 20</value>
   </data>
   <data name="preview.Text" xml:space="preserve">
-    <value>Podgląd</value>
+    <value>Podglą</value>
   </data>
   <data name="edit.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 20</value>
@@ -152,12 +164,30 @@
     <value>Usuń</value>
   </data>
   <data name="close.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 20</value>
+    <value>135, 20</value>
   </data>
   <data name="close.Text" xml:space="preserve">
-    <value>Zamknij</value>
+    <value>Wyjści</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Ścieżka</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>Korzeń</value>
+  </data>
+  <data name="changeLanguage.Text" xml:space="preserve">
+    <value>Zmień język</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Forma główna</value>
+    <value>Główne okno</value>
   </data>
 </root>

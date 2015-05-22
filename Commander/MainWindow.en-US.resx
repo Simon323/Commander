@@ -117,93 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Main window</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="progressLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="changeLanguage.Text" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="copy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="create.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>isRoot</value>
+  </data>
+  <data name="DateLeftDG.HeaderText" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="IsRootLeft.HeaderText" xml:space="preserve">
+    <value>isRoot</value>
+  </data>
+  <data name="NameLeftDG.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PathLeftDG.HeaderText" xml:space="preserve">
+    <value>Path</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="preview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 20</value>
   </data>
-  <data name="&gt;&gt;progressLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="preview.Text" xml:space="preserve">
+    <value>Preview</value>
   </data>
-  <data name="cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="SizeLeftDG.HeaderText" xml:space="preserve">
+    <value>Size</value>
   </data>
-  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 30</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ProgressBarForm</value>
-  </data>
-  <data name="cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 48</value>
-  </data>
-  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="progressLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 13</value>
-  </data>
-  <data name="progressLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;cancel.Name" xml:space="preserve">
-    <value>cancel</value>
-  </data>
-  <data name="progressLabel.Text" xml:space="preserve">
-    <value>0 %</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>284, 80</value>
-  </data>
-  <data name="cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="progressLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 21</value>
-  </data>
-  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="&gt;&gt;progressLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
-    <value>progressBar</value>
-  </data>
-  <data name="&gt;&gt;cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;progressLabel.Name" xml:space="preserve">
-    <value>progressLabel</value>
-  </data>
-  <data name="&gt;&gt;cancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;progressLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

@@ -513,7 +513,7 @@ namespace Commander
         private void changeLanguage_Click(object sender, EventArgs e)
         {
             if (Thread.CurrentThread.CurrentUICulture.Name == "pl-PL")
-                ChangeCulture(new CultureInfo("en"));
+                ChangeCulture(new CultureInfo("en-US"));
             else
                 ChangeCulture(new CultureInfo("pl-PL"));
         }

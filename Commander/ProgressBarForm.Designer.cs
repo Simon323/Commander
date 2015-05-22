@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressBarForm));
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.cancel = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
@@ -35,35 +36,25 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(217, 30);
-            this.progressBar.TabIndex = 0;
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(86, 48);
+            resources.ApplyResources(this.cancel, "cancel");
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 1;
-            this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // progressLabel
             // 
-            this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(237, 21);
+            resources.ApplyResources(this.progressLabel, "progressLabel");
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(24, 13);
-            this.progressLabel.TabIndex = 2;
-            this.progressLabel.Text = "0 %";
             // 
             // ProgressBarForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 80);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.progressBar);

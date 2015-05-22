@@ -61,13 +61,14 @@
             // 
             // driveComboLeft
             // 
-            this.driveComboLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.driveComboLeft, "driveComboLeft");
+            this.driveComboLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveComboLeft.Name = "driveComboLeft";
             this.driveComboLeft.SelectedIndexChanged += new System.EventHandler(this.driveComboLeft_SelectedIndexChanged);
             // 
             // dataGVLeft
             // 
+            resources.ApplyResources(this.dataGVLeft, "dataGVLeft");
             this.dataGVLeft.AllowUserToAddRows = false;
             this.dataGVLeft.AllowUserToResizeRows = false;
             this.dataGVLeft.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -78,7 +79,6 @@
             this.SizeLeftDG,
             this.DateLeftDG,
             this.IsRootLeft});
-            resources.ApplyResources(this.dataGVLeft, "dataGVLeft");
             this.dataGVLeft.MultiSelect = false;
             this.dataGVLeft.Name = "dataGVLeft";
             this.dataGVLeft.ReadOnly = true;
@@ -119,8 +119,8 @@
             // 
             // pathBoxLeft
             // 
-            this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.pathBoxLeft, "pathBoxLeft");
+            this.pathBoxLeft.BackColor = System.Drawing.SystemColors.Window;
             this.pathBoxLeft.Name = "pathBoxLeft";
             this.pathBoxLeft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pathBoxLeft_KeyDown);
             // 
@@ -139,49 +139,49 @@
             // 
             // preview
             // 
+            resources.ApplyResources(this.preview, "preview");
             this.preview.Name = "preview";
             this.preview.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            resources.ApplyResources(this.preview, "preview");
             this.preview.Click += new System.EventHandler(this.preview_Click);
             // 
             // edit
             // 
+            resources.ApplyResources(this.edit, "edit");
             this.edit.Name = "edit";
             this.edit.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            resources.ApplyResources(this.edit, "edit");
             this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // copy
             // 
+            resources.ApplyResources(this.copy, "copy");
             this.copy.Name = "copy";
             this.copy.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            resources.ApplyResources(this.copy, "copy");
             this.copy.Click += new System.EventHandler(this.copy_Click);
             // 
             // create
             // 
+            resources.ApplyResources(this.create, "create");
             this.create.Name = "create";
             this.create.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            resources.ApplyResources(this.create, "create");
             this.create.Click += new System.EventHandler(this.create_Click);
             // 
             // delete
             // 
+            resources.ApplyResources(this.delete, "delete");
             this.delete.Name = "delete";
             this.delete.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            resources.ApplyResources(this.delete, "delete");
             // 
             // close
             // 
+            resources.ApplyResources(this.close, "close");
             this.close.Name = "close";
             this.close.Padding = new System.Windows.Forms.Padding(45, 0, 45, 0);
-            resources.ApplyResources(this.close, "close");
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // driveComboRight
             // 
-            this.driveComboRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.driveComboRight, "driveComboRight");
+            this.driveComboRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveComboRight.Name = "driveComboRight";
             this.driveComboRight.SelectedIndexChanged += new System.EventHandler(this.driveComboRight_SelectedIndexChanged);
             // 
@@ -193,6 +193,7 @@
             // 
             // dataGVRight
             // 
+            resources.ApplyResources(this.dataGVRight, "dataGVRight");
             this.dataGVRight.AllowUserToAddRows = false;
             this.dataGVRight.AllowUserToResizeRows = false;
             this.dataGVRight.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -203,7 +204,6 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            resources.ApplyResources(this.dataGVRight, "dataGVRight");
             this.dataGVRight.MultiSelect = false;
             this.dataGVRight.Name = "dataGVRight";
             this.dataGVRight.ReadOnly = true;
@@ -283,11 +283,6 @@
         private System.Windows.Forms.ComboBox driveComboLeft;
         private System.Windows.Forms.DataGridView dataGVLeft;
         private System.Windows.Forms.TextBox pathBoxLeft;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PathLeftDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameLeftDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SizeLeftDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateLeftDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IsRootLeft;
         private System.Windows.Forms.MenuStrip menuStripBottom;
         private System.Windows.Forms.ToolStripMenuItem preview;
         private System.Windows.Forms.ToolStripMenuItem edit;
@@ -298,13 +293,18 @@
         private System.Windows.Forms.ComboBox driveComboRight;
         private System.Windows.Forms.TextBox pathBoxRight;
         private System.Windows.Forms.DataGridView dataGVRight;
+        public System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Button changeLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PathLeftDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameLeftDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SizeLeftDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateLeftDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsRootLeft;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        public System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.Button changeLanguage;
     }
 }
 
