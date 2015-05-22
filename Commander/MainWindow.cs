@@ -537,5 +537,21 @@ namespace Commander
                 UpdateControlCulture(res, control.Controls);
             }
         }
+
+        public void FocusLeftColumn()
+        {
+            activeGrid = false;
+            pathBoxRight.BackColor = Color.White;
+            pathBoxLeft.BackColor = Color.Silver;
+            dataGVRight.CurrentCell.Selected = false;
+        }
+
+        public void FocusRightColumn()
+        {
+            activeGrid = true;
+            pathBoxRight.BackColor = Color.Silver;
+            pathBoxLeft.BackColor = Color.White;
+            dataGVLeft.CurrentCell.Selected = false;
+        }
     }
 }
