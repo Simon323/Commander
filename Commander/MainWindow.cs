@@ -18,6 +18,7 @@ namespace Commander
     public partial class MainWindow : Form
     {
         public ProgressBarForm proceProgressBarForm;
+        public CreateForm createForm;
         public bool activeGrid = false;
         public MainWindow()
         {
@@ -499,7 +500,8 @@ namespace Commander
 
         private void create_Click(object sender, EventArgs e)
         {
-
+            createForm = new CreateForm();
+            createForm.Show();
         }
 
         private void close_Click(object sender, EventArgs e)
